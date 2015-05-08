@@ -1,7 +1,7 @@
 {
   "name": "MajorProjectCSC590",
   "version": "1.0.0",
-  "description": "",
+  "description": "Latitude and Longitude App uses Google's Geolocation API.",
   "private": true,
   "author": "Bryan Novak",
   "dependencies": {
@@ -15,6 +15,7 @@
     "grunt-contrib-connect": "^0.10.1",
     "grunt-contrib-copy": "^0.8.0",
     "grunt-contrib-uglify": "^0.9.1",
-    "grunt-processhtml": "^0.3.7"
+    "grunt-processhtml": "^0.3.7",
+    "grunt-contrib-cssmin": "^0.12.2"
   }
 }
