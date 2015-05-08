@@ -1,5 +1,4 @@
 module.exports = function(grunt) {
-
   grunt.loadNpmTasks('grunt-contrib-connect');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-concat');
@@ -36,6 +35,15 @@ module.exports = function(grunt) {
         }
       }
     },
+    cssmin: {
+      dist: {
+        files: {
+          'build/app.css': [
+            'css/style.css'
+          ]
+        }
+      }
+    },
     concat: {
       dist: {
         files: {
@@ -47,22 +55,13 @@ module.exports = function(grunt) {
         }
       }
     },
-    cssmin: {
-      dist: {
-        files: {
-          'build/app.css': [
-            'css/style.css'
-          ]
-        }
-      }
-    },
     copy: {
       dist: {
         files: [
           {expand: true, src: ['partials/*'], dest: 'dist/'},
           {expand: true, src: ['index.html'], dest: 'dist/'},
           {expand: true, src: ['app.css'], dest: 'dist/', cwd: 'build'}
-        ],
+        ]
       }
     },
     processhtml: {
@@ -73,7 +72,8 @@ module.exports = function(grunt) {
       }
     }
   });
-
+  
+  grunt.registerTask('run', ['connect:dist-server']); // http://localhost:8000/
   grunt.registerTask('dist-test', ['dist', 'connect:dist-server']);
   grunt.registerTask('dist', ['uglify:dist', 'cssmin:dist', 'concat:dist', 'copy:dist', 'processhtml:dist']);
 };

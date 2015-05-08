@@ -1,3 +1,7 @@
+<div id="clearLogBg">
+  <button ng-click="clearData()" id="clearLogBtn">Clear Data</button>
+</div>
+
 <div class="well">
   <div ng-repeat="log in logs track by $index" class="log-result">
     <div><a href="#/search/{{log}}">{{log}}</a></div>

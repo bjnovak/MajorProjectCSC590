@@ -5,8 +5,7 @@
 * {
 	padding:0;
 	margin:0 auto;
-	font-weight:400;
-	font-family:Open Sans;
+	font-family:arial;
 }
 
 /* 
@@ -16,11 +15,12 @@
 #header {
 	background-color:rgb(35,35,35);
 	overflow:auto;
-	padding:0px 50px 0px 50px;
+	padding-right:25px;
 }
 
 #header h1 {
 	padding:12px 15px 12px 0px;
+	margin-left:25px;
 	float:left;
 	font-size:26px;
 	font-weight:bold;
@@ -38,12 +38,36 @@ a:link.nav, a:visited.nav {
 	padding:8px 15px 8px 15px;
 	font-size:18px;
 	font-weight:bold;
-	color:white;
 	text-align:center;
 	min-width:100px;
 	border-radius:7px;
-	background-color:rgb(86,158,192);
+	background-color:rgb(235,235,235);
+	color:black;
 	text-decoration:none;
+}
+a:hover.nav {
+	background-color:rgb(245,245,245);
+}
+
+@media (max-width:800px) {
+
+	#header {
+		padding-right:0px;
+	}
+	a:link.nav, a:visited.nav {
+		color:white;
+		display:block;
+		width:100%;
+		margin:0;
+		padding:13px 0px 13px 0px;
+		border-radius:0;
+		float:left;
+		background-color:rgb(71,81,88);
+		border-bottom:1px solid rgb(52,60,65);
+	}
+	a:hover.nav {
+		background-color:rgb(81,91,100);
+	}
 }
 
 .page {
@@ -177,7 +201,7 @@ distance.html
 #distHead {
 	background-color:rgb(155,180,80);
 	text-align:center;
-	padding-top:10px;
+	padding:10px;
 }
 
 .distInput {
@@ -200,7 +224,40 @@ distance.html
 	box-shadow:0px 0px 5px rgba(0,0,0,0.1);
 	color:white;
 	font-weight:bold;
-	background-color:rgb(135,215,87);
+	background-color:rgb(115,115,115);
 	transition:background-color 0.5s;
 }
-#compute:hover { cursor:pointer; }
+#compute:hover { 
+	cursor:pointer;
+	background-color:rgb(125,125,125);
+}
+#distResult {
+	max-width:700px;
+	font-size:22px;
+	color:rgb(55,55,55);
+	background-color:rgb(255,242,168);
+	padding:25px;
+}
+
+#clearLogBg {
+	padding:50px 0px 50px 0px;
+	background-color:rgb(209,85,63);
+}
+
+#clearLogBtn {
+	margin:10px 0px 10px 0px;
+	padding:15px 30px 15px 30px;
+	border-radius:5px;
+	outline:none;
+	border:0;
+	font-size:18px;
+	box-shadow:0px 0px 5px rgba(0,0,0,0.1);
+	color:white;
+	font-weight:bold;
+	background-color:rgb(255,172,60);
+}
+
+#clearLogBtn:hover {
+	background-color:rgb(255,190,102);
+	cursor:pointer;
+}

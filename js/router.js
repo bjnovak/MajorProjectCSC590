@@ -6,6 +6,15 @@ var projectApp = angular.module('projectApp', [
 ]);
 
 projectApp.factory('Logger', function() {
+  if (typeof(Storage) !== "undefined") {
+    if (localStorage["logged"])
+      return {logs: JSON.parse(localStorage["logged"])};
+    else
+      return {logs: []};
+  }
+  else
+    console.log("Browser doesn't support Storage.");
+
   return {logs: []};
 });
 

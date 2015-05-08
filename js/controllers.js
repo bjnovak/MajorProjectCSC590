@@ -8,8 +8,9 @@ projectControllers.controller('searchCtrl', ['$scope', '$http', '$routeParams', 
 		// get the Geocoder objects based off of the users search query
 		var geocoder = new google.maps.Geocoder();
 		$scope.getLatLon = function() {
-			if (Logger.logs.indexOf($scope.query) == -1)
-				Logger.logs.push($scope.query);
+			if (Logger.logs.indexOf($scope.query) == -1) {
+				$scope.logData();
+			}
 
 			if ($scope.query) {
 				geocoder.geocode({'address': $scope.query}, function(results, status) {
@@ -27,6 +28,32 @@ projectControllers.controller('searchCtrl', ['$scope', '$http', '$routeParams', 
 		$scope.enter = function(event) {
 			if (event.which == 13) {
 				$scope.getLatLon();
+			}
+		};
+
+		$scope.logData = function() {
+			if (typeof(Storage) !== "undefined") {
+				if (!localStorage["logged"]) {
+					localStorage["logged"] = JSON.stringify([$scope.query]);
+				}
+				else {
+					var temp = JSON.parse(localStorage["logged"]);
+					var pushIt = true;
+
+					temp.forEach(function(obj) {
+						if (obj == $scope.query)
+							pushIt = false;
+					});
+
+					if (pushIt) {
+						temp.push($scope.query);
+						Logger.logs = temp;
+						localStorage["logged"] = JSON.stringify(temp);
+					}
+				}
+			}
+			else {
+				console.log("Browser doesn't support Storage.");
 			}
 		};
 
@@ -74,6 +101,12 @@ projectControllers.controller('searchCtrl', ['$scope', '$http', '$routeParams', 
 projectControllers.controller('logCtrl', ['$scope', 'Logger',
 	function($scope, Logger) {
 		$scope.logs = Logger.logs;
+
+		$scope.clearData = function() {
+			localStorage.removeItem("logged");
+			$scope.logs = [];
+			Logger.logs = [];
+		};
 	}]);
 
 projectControllers.controller('savedCtrl', ['$scope', 'Saved',
@@ -81,7 +114,7 @@ projectControllers.controller('savedCtrl', ['$scope', 'Saved',
 		$scope.saved = Saved.saved;
 
 		$scope.clearData = function() {
-			localStorage.clear();
+			localStorage.removeItem("saved");
 			$scope.saved = [];
 			Saved.saved = [];
 		};
@@ -100,8 +133,10 @@ projectControllers.controller('distanceCtrl', ['$scope', 'Saved',
 
 			var a = Math.sin(lat/2) * Math.sin(lat/2) + Math.cos(l1) * Math.cos(l2) * Math.sin(lon/2) * Math.sin(lon/2);
 			var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
-			console.log((6371 * c));
-			$scope.dist = (6371 * c) * 0.621371;
+
+			var result = (6371 * c) * 0.621371;
+			result.toFixed(2);
+			$scope.dist = result.toFixed(2);
 		};
 
 	}]);

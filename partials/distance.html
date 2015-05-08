@@ -6,7 +6,7 @@
 	<input ng-model="lon2" class="distInput" placeholder="Longitude B">
 
 	<button ng-click="getDist()" id="compute">Compute</button>
-	<p ng-model="dist">Distance in Miles: {{dist}}</p>
+	<p ng-model="dist" id="distResult">Distance between A/B: {{dist}} miles</p>
 </div>
 
 <div ng-repeat="save in saved track by $index" class="log-result">
