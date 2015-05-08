@@ -1,0 +1,11 @@
+<div id="clearBg">
+	<button ng-click="clearData()" id="clear">Clear Data</button>
+</div>
+
+<div id="savedBg">
+  <div ng-repeat="save in saved track by $index">
+  	<p class="savedData">{{$index + 1}}: {{save.formatted_address}}</p>
+  </div>
+</div>
+
+ <div ng-show="!saved.length">Log empty</div>

@@ -2,8 +2,8 @@
 
 var projectControllers = angular.module('projectControllers', []);
 
-projectControllers.controller('searchCtrl', ['$scope', '$http', '$routeParams', 'Logger',
-	function($scope, $http, $routeParams, Logger) {
+projectControllers.controller('searchCtrl', ['$scope', '$http', '$routeParams', 'Logger', 'Saved',
+	function($scope, $http, $routeParams, Logger, Saved) {
 
 		// get the Geocoder objects based off of the users search query
 		var geocoder = new google.maps.Geocoder();
@@ -40,18 +40,18 @@ projectControllers.controller('searchCtrl', ['$scope', '$http', '$routeParams', 
 
 					var pushIt = true;
 					temp.forEach(function(obj) {
-						console.log(obj.formatted_address + " !!!! " + $scope.results[result].formatted_address);
 						if (obj.formatted_address == $scope.results[result].formatted_address)
 							pushIt = false;
 					});
 
 					if (pushIt) {
 						temp.push($scope.results[result]);
+						Saved.saved = temp;
 						localStorage["saved"] = JSON.stringify(temp);
 					}
-				}
 
-				console.log(JSON.parse(localStorage["saved"]));
+					$scope.results.splice(result, 1);
+				}
 			}
 			else {
 				console.log("Browser doesn't support Storage.");
@@ -71,14 +71,37 @@ projectControllers.controller('searchCtrl', ['$scope', '$http', '$routeParams', 
 		}
 	}]);
 
-projectControllers.controller('searchLogCtrl', ['$scope', 'Logger',
+projectControllers.controller('logCtrl', ['$scope', 'Logger',
 	function($scope, Logger) {
 		$scope.logs = Logger.logs;
-		console.log(Logger.logs);
 	}]);
 
-projectControllers.controller('savedCtrl', ['$scope',
-	function($scope) {
-		$scope.saved = JSON.parse(localStorage["saved"]);
-		console.log($scope.saved);
+projectControllers.controller('savedCtrl', ['$scope', 'Saved',
+	function($scope, Saved) {
+		$scope.saved = Saved.saved;
+
+		$scope.clearData = function() {
+			localStorage.clear();
+			$scope.saved = [];
+			Saved.saved = [];
+		};
+	}]);
+
+projectControllers.controller('distanceCtrl', ['$scope', 'Saved',
+	function($scope, Saved) {
+		$scope.saved = Saved.saved;
+		$scope.dist = "null";
+
+		$scope.getDist = function() {
+			var l1 = Number($scope.lat1) * (Math.PI/180);
+			var l2 = Number($scope.lat2) * (Math.PI/180);
+			var lat = (Number($scope.lat2)-Number($scope.lat1)) * (Math.PI/180);
+			var lon = (Number($scope.lon2)-Number($scope.lon1)) * (Math.PI/180);
+
+			var a = Math.sin(lat/2) * Math.sin(lat/2) + Math.cos(l1) * Math.cos(l2) * Math.sin(lon/2) * Math.sin(lon/2);
+			var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+			console.log((6371 * c));
+			$scope.dist = (6371 * c) * 0.621371;
+		};
+
 	}]);

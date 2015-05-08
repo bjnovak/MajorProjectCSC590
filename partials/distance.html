@@ -1,0 +1,18 @@
+<div id="distHead">
+	<input ng-model="lat1" class="distInput" placeholder="Latitude A">
+	<input ng-model="lon1" class="distInput" placeholder="Longitude A">
+
+	<input ng-model="lat2" class="distInput" placeholder="Latitude B">
+	<input ng-model="lon2" class="distInput" placeholder="Longitude B">
+
+	<button ng-click="getDist()" id="compute">Compute</button>
+	<p ng-model="dist">Distance in Miles: {{dist}}</p>
+</div>
+
+<div ng-repeat="save in saved track by $index" class="log-result">
+	<span>{{$index + 1}}: {{save.formatted_address}}</span>
+	<p>Latitude: {{save.geometry.location.A}}</p>
+	<p>Longitude: {{save.geometry.location.F}}</p>
+</div>
+
+<div ng-show="!saved.length">Log empty</div>

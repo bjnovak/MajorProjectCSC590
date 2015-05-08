@@ -1,9 +1,0 @@
-<div class="well">
-  <div ng-repeat="save in saved track by $index" class="log-result">
-			<span>{{$index + 1}}: {{save.formatted_address}}</span>
-			<p>Latitude: {{save.geometry.location.A}}</p>
-      <p>Longitude: {{save.geometry.location.F}}</p>
-    </div>
-  </div>
-  <div ng-show="!saved.length" class="log-result">Log empty</div>
-</div>

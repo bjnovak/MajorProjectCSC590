@@ -20,7 +20,7 @@
 }
 
 #header h1 {
-	padding:12px 15px 12px 15px;
+	padding:12px 15px 12px 0px;
 	float:left;
 	font-size:26px;
 	font-weight:bold;
@@ -52,12 +52,13 @@ a:link.nav, a:visited.nav {
 }
 
 /*
-	SEARCH.html CSS
+	search.html CSS
 */
 .well {
 	display:inline-block;
 	overflow:auto;
 	text-align:left;
+	margin-bottom:25px;
 }
 .result {
 	margin:15px 15px 25px 15px;
@@ -103,7 +104,6 @@ a:link.nav, a:visited.nav {
 	font-weight:bold;
 	background-color:rgb(135,215,87);
 	transition:background-color 0.5s;
-
 }
 
 #submit:hover {
@@ -111,8 +111,21 @@ a:link.nav, a:visited.nav {
 	background-color:rgb(159,223,121);
 }
 
+.saveBtn {
+	margin-top:8px;
+	padding:5px 10px 5px 10px;
+	outline:none;
+	border:0;
+	font-size:16px;
+	box-shadow:0px 0px 5px rgba(0,0,0,0.1);
+	background-color:rgb(250,169,169);
+	border-radius:5px;
+}
+
+.saveBtn:hover { cursor:pointer; }
+
 /*
-SearchLog.html
+log.html
 */
 
 .log-result {
@@ -120,3 +133,74 @@ SearchLog.html
 	padding:10px 50px 10px 50px;
 	background-color:rgb(245,245,245);
 }
+
+/*
+saved.html
+*/
+#clearBg {
+	padding:50px 0px 50px 0px;
+	background-color:rgb(160,130,189);
+}
+
+#clear {
+	padding:15px 30px 15px 30px;
+	border-radius:5px;
+	outline:none;
+	border:0;
+	font-size:18px;
+	box-shadow:0px 0px 5px rgba(0,0,0,0.1);
+	color:white;
+	font-weight:bold;
+	background-color:rgb(105,72,138);
+	transition:background-color 0.5s;
+}
+
+#clear:hover {
+	cursor:pointer;
+	background-color:rgb(95,66,123);
+}
+
+#savedBg {
+	margin-top:30px;
+	margin-bottom:30px;
+}
+
+.savedData {
+	font-size:16px;
+	color:rgb(55,55,55);
+	margin-top:5px;
+}
+
+/*
+distance.html
+*/
+#distHead {
+	background-color:rgb(155,180,80);
+	text-align:center;
+	padding-top:10px;
+}
+
+.distInput {
+	font-size:18px;
+	display:block;
+	border:0;
+	outline:0;
+	padding:10px;
+	border-radius:10px;
+	margin-top:10px;
+}
+
+#compute {
+	margin:10px 0px 10px 0px;
+	padding:15px 30px 15px 30px;
+	border-radius:5px;
+	outline:none;
+	border:0;
+	font-size:18px;
+	box-shadow:0px 0px 5px rgba(0,0,0,0.1);
+	color:white;
+	font-weight:bold;
+	background-color:rgb(135,215,87);
+	transition:background-color 0.5s;
+}
+#compute:hover { cursor:pointer; }
