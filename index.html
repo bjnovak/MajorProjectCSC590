@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en" ng-app="projectApp">
+<head>
+	<meta charset="utf-8">
+	<title>Latitude and Longitude Search</title>
+
+	<script src="node_modules/angular/angular.js"></script>
+	<script src="node_modules/angular-route/angular-route.js"></script>
+	<script src="js/router.js"></script>
+	<script src="js/controllers.js"></script>
+	<script src="https://maps.googleapis.com/maps/api/js"></script>
+
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
+	<link href="css/style.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+	<div id="header">
+		<a href="#/search"><h1>Lat-Lon</h1></a>
+		<a href="#/log" class="nav">Search Log</a>
+		<a href="#/distance" class="nav">Distance</a>
+		<a href="#/saved" class="nav">Saved Locations</a>
+	</div>
+
+	<div ng-view class="page"></div>
+</body>
+</html>

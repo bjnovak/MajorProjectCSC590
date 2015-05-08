@@ -1,0 +1,6 @@
+<div class="well">
+  <div ng-repeat="log in logs track by $index" class="log-result">
+    <div><a href="#/search/{{log}}">{{log}}</a></div>
+  </div>
+  <div ng-show="!logs.length" class="log-result">Log empty</div>
+</div>

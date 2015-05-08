@@ -1,0 +1,122 @@
+/* 
+	GLOBAL CSS
+*/
+
+* {
+	padding:0;
+	margin:0 auto;
+	font-weight:400;
+	font-family:Open Sans;
+}
+
+/* 
+	HEADER CSS
+*/
+
+#header {
+	background-color:rgb(35,35,35);
+	overflow:auto;
+	padding:0px 50px 0px 50px;
+}
+
+#header h1 {
+	padding:12px 15px 12px 15px;
+	float:left;
+	font-size:26px;
+	font-weight:bold;
+	color:white;
+	transition:0.5s;
+}
+#header h1:hover {
+	cursor:pointer;
+	color:rgb(73,156,224);
+}
+
+a:link.nav, a:visited.nav {
+	float:right;
+	margin:10px 0px 6px 15px;
+	padding:8px 15px 8px 15px;
+	font-size:18px;
+	font-weight:bold;
+	color:white;
+	text-align:center;
+	min-width:100px;
+	border-radius:7px;
+	background-color:rgb(86,158,192);
+	text-decoration:none;
+}
+
+.page {
+  width:100%;
+  text-align:center;
+}
+
+/*
+	SEARCH.html CSS
+*/
+.well {
+	display:inline-block;
+	overflow:auto;
+	text-align:left;
+}
+.result {
+	margin:15px 15px 25px 15px;
+	background-color:rgb(245,245,245);
+	border-radius:10px;
+	min-width:500px;
+}
+.result-head {
+	background-color:rgb(225,225,225);
+	border-radius:10px 10px 0px 0px;
+	padding:8px 15px 8px 15px;
+	font-size:18px;
+	font-weight:bold;
+}
+.result-content { 
+	padding:10px;
+}
+
+#searchDiv {
+	text-align:center;
+	background-color:rgb(53,129,157);
+	padding:100px 15px 100px 15px;
+	margin-bottom:25px;
+	border-bottom:1px solid rgb(75,75,75);
+}
+
+#search, #submit {
+	padding:15px 30px 15px 30px;
+	border-radius:5px;
+	outline:none;
+	border:0;
+	font-size:18px;
+	box-shadow:0px 0px 5px rgba(0,0,0,0.1);
+}
+
+#search {
+	width:300px;
+	color:rgb(75,75,75);
+}
+
+#submit {
+	color:white;
+	font-weight:bold;
+	background-color:rgb(135,215,87);
+	transition:background-color 0.5s;
+
+}
+
+#submit:hover {
+	cursor:pointer;
+	background-color:rgb(159,223,121);
+}
+
+/*
+SearchLog.html
+*/
+
+.log-result {
+	margin-top:15px;
+	padding:10px 50px 10px 50px;
+	background-color:rgb(245,245,245);
+}

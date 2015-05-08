@@ -1,0 +1,19 @@
+<div id="searchDiv">
+  <input ng-model="query" ng-keypress="enter($event)" placeholder="Input location or address" id="search">
+  <button ng-click="getLatLon()" id="submit">Search</button>
+</div>
+
+<div class="well">
+  <div ng-repeat="result in results track by $index" class="result">
+    <div class="result-head">
+      <span>{{$index + 1}}: {{result.formatted_address}}</span>
+    </div>
+    <div class="result-content">
+      <p>Latitude: {{result.geometry.location.A}}</p>
+      <p>Longitude: {{result.geometry.location.F}}</p>
+      <button ng-click="save($index)">save</button>
+    </div>
+    <br>
+  </div>
+  <div ng-show="!results.length">No Results</div>
+</div>
